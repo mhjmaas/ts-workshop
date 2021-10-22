@@ -89,7 +89,7 @@ const myName = {
     lastName: 'Maas'
 };
 
-console.log(`Hello ${myName.firstName} ${myName.lastName}!`);
+console.log(`Hello ${myName.firstName} ${myName.lastName}!`); // uses the dot-notation to get to properties of an object.
 ```
 
 The above code will say "Hello Marcel Maas" and work properly. However it is also valid to do the following:
