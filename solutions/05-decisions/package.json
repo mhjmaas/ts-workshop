@@ -4,7 +4,6 @@
   "description": "Traditionally any programmer starts its first foray into programming by writing or printing \"Hello world\". In our case we will use NodeJS to print a line to the console.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "task1": "node excercise1.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

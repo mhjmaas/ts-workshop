@@ -16,7 +16,7 @@ if (myAge < 30) { // if myAge is less than 20, other possible options are <=, >,
 // also note the "else" block is optional, if you don't need to do anything else, just leave it out...
 
 ```
-The above code is alreay in the index.js file in this folder. Modify the myAge value to be 29, 30 and observe. now change the operator to any of >=, > or === and observe what happens to the result. You can also do != or !== which is "NOT equals".
+The above code is alreay in the index.js file in this folder. Modify the myAge value to be 29, 30 and observe. now change the operator to any of >=, > or === and observe what happens to the result.
 
 As you can see you every expression that resolves to true will then be executed in the "if" block. You can also compare strings and execute code when they match. However that's when we run into one of the quirks of javascript and type safety. The rule of thumb is if you want to compare for equality always use the triple equals operator (===) instead of double equals (==) like in other programming languages. Double equals converts to the same type first before comparing, where triple equals does not, and that is more advisable to use. Let me illustrate with an example:
 
@@ -76,5 +76,3 @@ Also remove one of the break statements to see what happens.
 Imagine we need to write so logic to decide what food to give to the cat. I have set up a simple script called 'excercise1.js'. In the 'decideWhatFoodToGive' function you have to write the logic to call the right method which I have already provided. So when the 'foodToGive' is 'wet' you should call the appropriate function. You can run this code by typing 'npm run task1' in the terminal. Have a look at the package.json to find out how I've set that up.
 
 You can find the solution in the well know location just like earlier labs.
-
-When you are done, proceed with [Typescript intro](../06-typescript-intro/README.md)
