@@ -1,104 +1,98 @@
-class Person { // a class definition always start by specifying the "class" keyword, and the name of the class starts with uppercase.
-    
-    /**
-     * What follows here are class properties, so these make up the information the object can hold.
-     * These properties (and methods) are either public or privately accessible
-     * Public or Private determines if this variable or function can be used both inside or outside its class.
-     * Public properties and method can be used both inside and outside its class
-     * Private properties and  can only be used inside its class
-     */
-    public name: string; 
-    public gender: string;
-    private birthDate: Date;
+// Solution 
+class Dog {
+    constructor(public name: string, public age: number, public color: string, public furryness: string) {
 
-    /**
-     * The constructor is a special kind of funtion that runs when creating the instance of the class. So only once, and 
-     * as you can see it allows you to set the initial values of the class
-     */
-    constructor(name: string, gender: string, birthDate: Date) {
-        this.name = name; // this.name refers to the name property on class level, while the name is the provided name in the constructor
-        this.gender = gender;
-        this.birthDate = birthDate;
     }
 
-    /**
-     * A public method, that allows to get your age in years, accessible from both inside and outside the class
-     */
-    public getAge(): number {
-        const today: Date = new Date();
-        const age: number = today.getFullYear() - this.birthDate.getFullYear(); // not the most accurate way, bit it will do for now
-        return age;
+    public trimDog(newFurryness: string): void {
+        this.furryness = newFurryness;
     }
 
-    /**
-     * A private method, which is only allowed to be accessd from inside the class, like you see done in the
-     * printInfo method
-     */
-    private isAllowedToDrink(): boolean {
-        if (this.getAge() >= 18) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Another public method, which uses both other public and private methods to be able to print 
-     * a line of information about this instance.
-     */
     public printInfo(): void {
-        const age = this.getAge();
-        const allowedToDrink = this.isAllowedToDrink();
-        console.log(`${this.name} is a ${this.gender} and ${age} years old, thus${allowedToDrink ? ' ' : ' NOT '}allowed to drink`);
+        console.log(`My ${this.color} dog is caled ${this.name}, is ${this.age} years old, and is looking ${this.furryness} today.`);
     }
 }
 
-/**
- * Here you see how a class is "instantiated" by providing the information the constructor needs, using the "new" keyword.
- */
-const marcel = new Person('Marcel Maas', 'male', new Date(1986, 2, 18)); 
-const lizzie = new Person('Lizze Jones', 'female', new Date(2005, 11, 3));
+const myDog = new Dog('Whiskey', 4, 'brown', 'quity hairy');
+myDog.printInfo();
+myDog.trimDog('nice and short');
+myDog.printInfo();
 
-// call a public method on the instance of the class
-marcel.printInfo();
-lizzie.printInfo();
+// Bonus example
+class Ship {
+    constructor(public name: string, public tonnage: number) {} // just give the ship a couple of properties
 
-// so you cannot do marcel.isAllowedToDrink() here... because it is private
+    public turnLeft(): void {
+        // ...
+    }
 
+    public turnRight(): void {
+        // ...
+    }
+}
 
-class Game {
+class SailYacht extends Ship { // Define a SailYacht based on the Ship class
     /**
-     * This constructor is a shorthand version of creating class properties and populating them using the constructor
+     * Make sure to add both the parent class its parameters as well as the new parameters
      */
-    constructor(private running: boolean, public score:number) {
+    constructor(public name: string, public tonnage: number, public numberOfSails: number, public length: number) {
+        super(name, tonnage); // call to "super" calls the parent class its constructor which has 2 parameters. this is mandatory
     }
 
-    public setScore(score: number) {
-        this.score = score; // once again, this.score refers to the class level property score, while the score refers to the value provided in the method
+    public raiseSails(): void {
+        // ...
     }
-
-    public start() {
-        this.running = true;
-        this.score = 0;
-    }
-
-    public end() {
-        this.running = false;
-    }
-
-    public printStatus() {
-        if (this.running) {
-            console.log(`The game is running and the score is: ${this.score}`);
-        } else {
-            console.log(`The game has ended with a score of ${this.score}`);
-        }
-    }
-
 }
 
-const game = new Game(true, 0); // create instance of the game
-game.printStatus();
-game.setScore(5);
-game.printStatus();
-game.end();
-game.printStatus();
+class MotorBoat extends Ship { // Define a MotorBoat based on the Ship class
+    constructor (public name: string, public tonnage: number, public horsePower: number) {
+        super(name, tonnage);
+    }
+
+    public startEngine(): void {
+        // ...
+    }
+}
+
+const rowBoat = new Ship('Tiny tim', 0.1); // You can instantiate the parent class by itself
+const myYacht = new SailYacht('Memphis belle', 1.6, 2, 120);
+const motorYacht = new MotorBoat('Princess Elena', 2.5, 750);
+
+rowBoat.turnLeft(); // the parent (or superclass) can only turn right or left
+
+myYacht.raiseSails();  // the sailyacht can raise sails in addition to turning right or left
+myYacht.turnLeft();
+
+motorYacht.startEngine(); // as you can see a motorboat has different methods again, no way to rais sails, but a way to start the engine
+motorYacht.turnRight();
+
+// bonus solution
+abstract class Mammal { // made this class abstract, because everyone is a specific type of mammal
+    constructor(public name: string, public age: number) {
+
+    }
+}
+
+class Cat extends Mammal {
+    constructor(public name: string, public age: number, public color: string, public furryness: string) {
+        super(name, age);
+    }
+
+    public trimDog(newFurryness: string): void {
+        this.furryness = newFurryness;
+    }
+
+    public printInfo(): void {
+        console.log(`My ${this.color} dog is caled ${this.name}, is ${this.age} years old, and is looking ${this.furryness} today.`);
+    }
+}
+
+class Dolphin extends Mammal {
+    constructor(public name: string, public age: number, public numberOfFlippers: number) {
+        super(name, age);
+    }
+
+    public printInfo(): void {
+        console.log(`My dolphin is caled ${this.name}, is ${this.age} years old, and has got ${this.numberOfFlippers} flippers.`);
+    }
+}
