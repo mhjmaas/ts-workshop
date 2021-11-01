@@ -1,6 +1,6 @@
 import { MatchController } from './matchController';
 import { PlayerController } from './playerController';
-import { Referee } from './players';
+import { Referee } from '../model/referee';
 
 export class GameController {
   public static ONE_MINUTE_DURATION_MS = 500; // one minute takes 500 milliseconds in our case. (half a second)
@@ -14,7 +14,7 @@ export class GameController {
 
 
   public async startGame() {
-    await this.playerController.loadPlayersFromFile('availablePlayers.json');
+    await this.playerController.loadPlayersFromFile('assets/availablePlayers.json');
     const homeTeam = this.playerController.generateHomeTeam(11);
     const awayTeam = this.playerController.generateAwayTeam(11);
     const referee = new Referee('Constance Jones', 38);

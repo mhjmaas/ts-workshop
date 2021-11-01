@@ -1,4 +1,4 @@
-import { Player } from './player';
+import { Player } from '../model/player';
 const fs = require('fs'); // there is no es6 import for FS just yet, so have a look at the old way here, using require.
 
 /**
