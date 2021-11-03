@@ -1,3 +1,3 @@
 # Next steps
 
-Think of pointing towards documentation for "this" and....
+Now that we have the basics, lets talk about a use-case to work on.
