@@ -64,4 +64,4 @@ let name = 'Marcel'; // initialise the name variable with my name
 name = name + ' Maas'; // this does not change the value 'Marcel' but instead creates a new string using the old name and the new surname ' Maas' and assigns that to the name variable. (and by extent the memory in which the original value was held is freed because no one is referencing it anymore.)
 ```
 
-This was kind of a boring lab but really had to be done to understand how variables work, and also sometimes conspire to work against you. Lets continue with the next lab: [Arrays and loops]((../04-arrays-and-loops/README.md))
+This was kind of a boring lab but really had to be done to understand how variables work, and also sometimes conspire to work against you. Lets continue with the next lab: [Arrays and loops](../04-arrays-and-loops/README.md)
